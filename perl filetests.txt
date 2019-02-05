@@ -1,0 +1,28 @@
+-r	File is readable by effective uid/gid.
+-w	File is writable by effective uid/gid.
+-x	File is executable by effective uid/gid.
+-o	File is owned by effective uid.
+-R	File is readable by real uid/gid.
+-W	File is writable by real uid/gid.
+-X	File is executable by real uid/gid.
+-O	File is owned by real uid.
+-e	File exists.
+-z	File has zero size.
+-s	File has non-zero size (returns size).
+-f	File is a plain file.
+-d	File is a directory.
+-l	File is a symbolic link.
+-p	File is a named pipe (FIFO).
+-S	File is a socket.
+-b	File is a block special file.
+-c	File is a character special file.
+-u	File has setuid bit set. # setuid!!!!
+-g	File has setgid bit set.
+-k	File has sticky bit set.
+-t	Filehandle is opened to a tty.
+-T	File is a text file.
+-B	File is a binary file (opposite of -T).
+timestamps:
+-M	script start time minus file Modification time! (mtime, last modified time)
+-A	Same for Access time. (atime)
+-C	Same for index node (inode) Change time. (ctime).  When the i-node was last changed (could be a permission change, etc)

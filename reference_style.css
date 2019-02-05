@@ -1,0 +1,36 @@
+body {
+  font-family: verdana,helvetica,arial,sans-serif;
+  font-size: 14px;
+  color: #404040;
+  background-color: white;
+  margin: 0; }
+
+table {
+  font-size: 100%;
+  border-collapse: collapse;
+  width: 100%; }
+  table th {
+    color: #fff;
+    background-color: #555;
+    border: 1px solid #555;
+    padding: 3px;
+    vertical-align: top;
+    text-align: left; }
+    table th a:link, table th a:visited {
+      color: white; }
+    table th a:hover, table th a:active {
+      color: #ee872a; }
+  table tr:nth-child(odd) {
+    background-color: #f1f1f1; }
+  table tr:nth-child(even) {
+    background-color: white; }
+  table td {
+    border: 1px solid #d4d4d4;
+    padding: 5px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    vertical-align: top;
+    line-height: 130%; }
+
+colgroup col:nth-child(odd) {
+  background-color: red !important; }

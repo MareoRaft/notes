@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SQL Reference</title>
+	<link rel="stylesheet" href="reference_style.css" />
+</head>
+<body>
+<table class="reference notranslate"><!-- alternate row colors is done with tr:nth-child(odd) -->
+	<colgroup><!-- doesn't work because the CSS sets colors for tr and th and td which override this yellow.  Don't know how to change precendence.-->
+		<col>
+		<col>
+	</colgroup>
+    <tr>
+      <th style="width:27%">SQL Statement</th>
+      <th>Syntax</th>
+    </tr>
+    <tr>
+      <td>AND / OR</td>
+      <td>SELECT column_name(s)<br />
+		FROM table_name<br />
+		WHERE condition<br />
+		AND|OR condition</td>
+    </tr>
+	<tr>
+      <td>AS (alias)</td>
+      <td>SELECT column_name [AS] column_alias, etc<br />
+		FROM table_name [AS] table_alias</td>
+    </tr>
+	<tr>
+      <td>BETWEEN</td>
+      <td>SELECT column_name(s)<br />
+		FROM table_name<br />
+		WHERE column_name<br />
+		BETWEEN value1 AND value2 (this is an inclusive range)</td>
+    </tr>
+    <tr>
+    	<td>SHOW</td>
+    	<td>SHOW DATABASES;<br />
+    	USE databasename;<br />
+    	SHOW TABLES;<br />
+    	SHOW COLUMNS FROM tablename; or DESCRIBE tablename;</td>
+	<tr>
+      <td>CREATE DATABASE</td>
+      <td>CREATE DATABASE database_name</td>
+    </tr>
+	<tr>
+      <td>CREATE INDEX</td>
+      <td>CREATE INDEX index_name<br />
+		ON table_name (column_name(s))<p><i>or</i></p>
+		<p>CREATE UNIQUE INDEX index_name<br />
+		ON table_name (column_name(s))</td>
+    </tr>
+	<tr>
+      <td>CREATE VIEW</td>
+      <td>CREATE VIEW view_name AS<br />
+		SELECTstatement
+    </tr>
+	<tr>
+      <td>CREATE TABLE</td>
+      <td>CREATE TABLE table_name<br />
+		(<br />
+		column_name1 data_type [constraint],<br />
+		column_name2 data_type [constraint],<br />
+		column_name2 data_type [constraint],<br />
+		...<br />
+		)</td>
+    </tr>
+    <tr>
+      <td>ALTER TABLE</td>
+      <td>ALTER TABLE table_name <br />
+		ADD COLUMN column_name datatype<p><i>or</i></p>
+		<p>ALTER TABLE table_name <br />
+		DROP COLUMN column_name</td>
+    </tr>
+	<tr>
+      <td>DROP TABLE</td>
+      <td>DROP TABLE table_name</td>
+    </tr>
+	<tr>
+      <td>DROP DATABASE</td>
+      <td>DROP DATABASE database_name</td>
+    </tr>
+	<tr>
+      <td>DROP INDEX</td>
+      <td>DROP INDEX table_name.index_name (SQL
+		Server)<br />
+		DROP INDEX index_name ON table_name (MS Access / MySQL)<br />
+		DROP INDEX index_name (DB2/Oracle)<br />
+		ALTER TABLE table_name DROP INDEX index_name (MySQL)</td>
+    </tr>
+	<tr>
+      <td>INSERT INTO</td>
+      <td>INSERT INTO table_name<br />
+		VALUES (value1, value2, value3,....)<p><i>or</i></p>
+		<p>INSERT INTO table_name<br />
+		(column1, column2, column3,...)<br />
+		VALUES (value1, value2, value3,....)</p></td>
+    </tr>
+	<tr>
+      <td>UPDATE</td>
+      <td>UPDATE table_name<br />
+		SET column1=value, column2=value,...<br />
+		WHERE column_name OP value</td>
+    </tr>
+	<tr>
+      <td>DELETE</td>
+      <td>DELETE FROM table_name<br />
+		WHERE column_name OP value<p><i>or</i></p>
+		<p>DELETE FROM table_name <br />
+		(<b>Note: </b>Deletes all rows.  TRUNCATE TABLE table_name is the same, but faster)</p>
+		(<b>Note: </b>same format as select statement, but without the column list to view)</p></td>
+    </tr>
+	<tr>
+      <td>EXISTS</td>
+      <td>IF EXISTS (SELECT * FROM table_name WHERE id = ?)<br />BEGIN<br />--do
+	  what needs to be done if exists<br />END<br />[ ELSE<br />BEGIN<br />--do what needs
+	  to be done if not<br />END ]</td>
+    </tr>
+	<tr>
+		<td>aggregate functions</td>
+		<td>These take in more than one value (a column of values), and output one value.  They are MAX, MIN, AVG, SUM, COUNT(col), COUNT(*).
+		<br />COUNT(col)s the number of non-null values.  COUNT(*)s the number of rows.</td>
+	<tr>
+      <td>GROUP BY</td>
+      <td>SELECT column_name,
+		aggregate_function(column_name)<br />
+		FROM table_name<br />
+		WHERE column_name OP value<br />
+		GROUP BY column_name</td>
+    </tr>
+	<tr>
+      <td>HAVING</td>
+      <td>SELECT column_name, aggregate_function(column_name)<br />
+		FROM table_name<br />
+		GROUP BY column_name<br />
+		HAVING aggregate_function(column_name) OP value<br />
+		(same as <b>WHERE</b> seive, but for aggregate functions, so it goes after a GROUP BY clause)</td>
+    </tr>
+	<tr>
+      <td>IN</td>
+      <td>SELECT column_name(s)<br />
+		FROM table_name<br />
+		WHERE column_name IN (value1,value2,..)</td>
+    </tr>
+	<tr>
+      <td>JOIN (aka INNER JOIN)</td>
+      <td>SELECT table_name.column_name(s)<br />
+		FROM table_name1 INNER JOIN table_name2<br />
+		ON table_name1.column_name OP table_name2.column_name (<b>to join a table to itself, use an alias!</b>)</td>
+    </tr>
+	<tr>
+      <td>LEFT JOIN (aka LEFT OUTER JOIN)</td>
+      <td>same syntax. where the column values match up, that is where we get compound rows.<br />
+      Non compound rows (no match) are either belonging to the left table or the right table.<br />
+      JOIN shows only compounds.<br />
+      LEFT JOIN shows left non-match-rows and compounds.</td>
+    </tr>
+	<tr>
+      <td>RIGHT JOIN (aka RIGHT OUTER JOIN)</td>
+      <td>same syntax.<br />
+      RIGHT JOIN shows compounds and right non-match-rows.</td>
+    </tr>
+	<tr>
+      <td>FULL JOIN (aka FULL OUTER JOIN)</td>
+      <td>same syntax.<br />
+      FULL JOIN shows compounds and all non-match rows.</td>
+    </tr>
+	<tr>
+      <td>OP</td>
+      <td>the arithmetic operators are =, <>, <, >, <=, >=, and BETWEEN<br />
+      the string operators are LIKE, RLIKE (REGEXP)<br />
+      the NULL operators are <b>is</b> and <b>is not</b></td>
+    </tr>
+	<tr>
+      <td>ORDER BY</td>
+      <td>SELECT column_name(s)<br />
+		FROM table_name<br />
+		ORDER BY column_name [DESC], column_name [DESC], ...</td>
+    </tr>
+    <tr>
+      <td>SELECT</td>
+      <td>SELECT column_name(s) [INTO table_other] (this allows us to transfer rows in, assuming both tables have same structure)<br />
+		FROM table_name (use * for all cols)</td>
+    </tr>
+    <tr>
+      <td>SELECT DISTINCT</td>
+      <td>SELECT DISTINCT column_name(s)<br />
+		FROM table_name</td>
+    </tr>
+    <tr>
+      <td>SELECT INTO</td>
+      <td>SELECT *<br />
+		INTO new_table_name [IN externaldatabase]<br />
+		FROM old_table_name<p><i>or</i></p>
+		<p>SELECT column_name(s)<br />
+		INTO new_table_name [IN externaldatabase]<br />
+		FROM old_table_name</p></td>
+    </tr>
+    <tr>
+      <td>SELECT TOP</td>
+      <td>SELECT TOP number|percent column_name(s) FROM table_name<br />
+      SELECT col(s) FROM tb_name LIMIT number|percent (MySQL)</td>
+    </tr>
+    <tr>
+      <td>TRUNCATE TABLE</td>
+      <td>TRUNCATE TABLE table_name</td>
+    </tr>
+	<tr>
+      <td>UNION</td>
+      <td>SELECTstatement<br />
+		UNION<br />
+		SELECTstatement</td>
+    </tr>
+	<tr>
+      <td>UNION ALL</td>
+      <td>same syntax.  Shows duplicate rows.</td>
+    </tr>
+    <tr>
+      <td>WHERE</td>
+      <td>SELECT column_name(s)<br />
+		FROM table_name<br />
+		WHERE column_name OP value</td>
+    </tr>
+    <tr>
+    	<td>constraints</td>
+    	<td>not null, unique, default, check (condition), primary key, foreign key references tab(col)<br />
+    	syntax:<br />
+    	[CONSTRAINT name] CONSTRAINTTYPE (col(s))</td>
+    </table>
+</body>
+</html>
