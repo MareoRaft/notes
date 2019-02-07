@@ -1,3 +1,4 @@
+
 Character Codes! (info from http://www.joelonsoftware.com/articles/Unicode.html)
 ================
 *more reading: http://www.perlmonks.org/?node_id=862973

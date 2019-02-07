@@ -272,3 +272,9 @@ the function prototype has these methods:
 .name
 .bind(), .call(), .apply()
 and many more!
+
+
+
+RANDOM
+------
+http://stackoverflow.com/questions/10331305/what-is-define-used-for-in-javascript-aside-from-the-obvious
