@@ -1,10 +1,14 @@
-Both char* p and char *p make sense.  But in func( int* p ) vs func( int *p ), the former makes more sense.  Therefore I favor a left justified star!
 
-%n.mf for formatted floats.  At least n digits wide (space fill if necessary), and exactly m decimal places.
+# declaring a pointer variable
+Both `char* p` and `char *p` make sense.  
+But in `func( int* p )` vs `func( int *p )`, the former makes more sense.   Therefore I favor a left justified star!
+
+%n.mf for formatted floats.  
+At least n digits wide (space fill if necessary), and exactly m decimal places.
 
 
 C++11 STUFF
-___________________________________________
+-----------
 an lvalue ref is NOT a ref, but rather an alias.
 int x = 23;
 int & l = x;

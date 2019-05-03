@@ -1,28 +1,18 @@
 BASH ON WINDOWS
------------------------
+---------------
 There is a new product called Bash on Ubuntu on Windows.  According to some, it is easier to install and start using than Cygwin!
 https://blogs.msdn.microsoft.com/commandline/2016/04/06/bash-on-ubuntu-on-windows-download-now-3/
 
 
-useful thing for bash scripts!!!:
-set -e # halt script on error
+# halt script on error
+set -e 
 
 
 
-#  \[\033[           x;             y                     m                      \]
-#     ESC       SGR parameters                      end an SGR code
+# color escape codes / info
+\[\033[    x;       y        m                 \]
+ESC          SGR parameters          end an SGR code
 
-#see color.pl and MohithMatthew/256colors2.pl
-#semicolons::   0 - regular, 1 - bold, 2 - faint/dark, 3 - (italic),  4 - underline, 5 - blink, 6- (blinkrapid), 7 - reverse video on, 8 - invisible
-
-
-#   PS1="\[\033[41m\]\[\033[30m\][\[\033[31m\]\u@\[\033[1;33m\]\h:\[\033[1;35m\]\W,\[\033[1;34m\] \@,\[\033[1;37m\]\d\[\033[30m\]]\[\033[0m\]>"
-#                                             \u is the User.  \h is the computer \W is directory \@ is the time   \d is the date
-
-# all possible stuff:
-#PS1="hostnameh \h hostname \H basenametermdevice \l shell \s username \u cwd \w cwdbase \W hist \! cmdnum \# effectUIDind \$ oct \nnn END"
-
-color list:
 Black	0;30
 Blue (slightly purplish)	0;34
 Green	0;32
@@ -33,28 +23,63 @@ Brown (looks yellow)	0;33
 Blue	0;34
 use 1 instead of 0 to get light or bold version
 
+see color.pl and MohithMatthew/256colors2.pl
+0 - regular
+1 - bold
+2 - faint/dark
+3 - (italic)
+4 - underline
+5 - blink
+6- (blinkrapid)
+7 - reverse video on
+8 - invisible
 
 
 
+# PS1
+PS1="\[\033[41m\]\[\033[30m\][\[\033[31m\]\u@\[\033[1;33m\]\h:\[\033[1;35m\]\W,\[\033[1;34m\] \@,\[\033[1;37m\]\d\[\033[30m\]]\[\033[0m\]>"
+
+## PS1 common interpolation variables
+\u is the User
+\h is the computer
+\W is directory
+\@ is the time
+\d is the date
+
+## PS1 more interpolation variables
+PS1="hostname--> \h hostname \H basenametermdevice \l shell \s username \u cwd \w cwdbase \W hist \! cmdnum \# effectUIDind \$ oct \nnn"
+
+
+# hosts
 127.0.0.1 is localhost
-ssh -i /path/to/key/file.pem username@IPaddress
-session:
-http://underscorejs.org/#omit
-http://stackoverflow.com/questions/10331305/what-is-define-used-for-in-javascript-aside-from-the-obvious
-http://54.174.141.44:5001
 
+# ssh address
+username@hostname
+username@domain
+username@ipaddress
+username@ipaddress:path/relative/to/home/dir
+username@ipaddress:/path/absolute
+
+ssh -i /path/to/key/file.pem username@IPaddress
 ssh punc5093@instructorium.com or ssh punc5093@50.63.101.1 (Godaddy) password is... (redacted)
+
 perl mojo.pl daemon -l http://172.31.20.110:5432
 (that's the private IP, the one the server sees itself)
 type in browser: http://54.201.15.197:5432
 (that's the public IP, allowing anyone to find the server. that address upon arrival is rerouted to the private IP)
 
 
-
+# bash keybindings
+Unfortunately, these may not work in tmux.
 ctrl-k kill-->remove from cursor to end of line (like cut)
 ctrl-y yank-->insert what was killed (like paste)
+https://www.redpill-linpro.com/sysadvent/2015/12/09/shell-intro-tips.html
 
-execute a command AS A GROUP: sg groupname -c 'command here!'
+sudo -- super user do
+su -- switch user
+sg -- switch group
+execute a command AS A GROUP:
+`sg groupname -c 'command here!'`
 sg for switch group, c for command, single quote the command to pass in as argument!
 
 routing STDIN to a command which normally accepts a FILE:
@@ -103,24 +128,48 @@ Mo: usually, in the beginning, file descriptor 0 points to the STDIN stream...
 HERE-DOCS are NOT like pipes.  You can only use it once, and the rightmost one would overwrite others. Use "" if you want a blank line to terminate the quote.
 6<>file.txt opens the file for reading AND writing.  Assigns fd 6 to it.
 
-redirection:
-follow an i/o with a path without whitespace to redirect:
--->example   cat 0<input.txt 1>output.txt
-0< is now pulling from input.txt instead. 1> is now outputting to output.txt instead.
---command...   2>/dev/null
-1<&2 means that the 1< input is now pulling from 2< instead.
+
+
+
+Redirection
+-----------
+0 is STDIN
+1 is STDOUT
+2 is STDERR
+
+`<` alone is short for `0<`
+`>` alone is short for `1>`
+
+A space *after* `<` or `>` is okay, but *before* is not.
+
+Example:
+```
+cat 0<input.txt 1>output.txt
+```
+0< is now pulling from input.txt instead. 1> is now outputting to output.txt instead.  Inputs point left, outputs point right.
+
+Example :
+```
+mycommand 2>/dev/null
+```
+The STDERR resulting from mycommand is now redirected to /dev/null.
+
+1<&2 means that the 1's input is now pulling from 2's input instead.  
 We cannot chain them 1>&2 2>&3 3>&4 4>file.txt like so.
-We must chain them 4>file.txt 3>&4 2>&3 1>&2 like so.  Read it like this: 4 goes to file.txt.  3 goes to what 4 is pointing to.  2 goes to what 3 is pointing to...
+We must chain them 4>file.txt 3>&4 2>&3 1>&2 like so.  
+Read it like this: 4 goes to file.txt.  3 goes to what 4 is pointing to.  2 goes to what 3 is pointing to...
 1<2 would be accepting input from a file named 2.
 1<'&2' would be accepting input from a file named &2.
 
-more:
-exec, you can only use an fd for reading ONCE, close a fd like this: 3>&-, fifo (first in first out), pipes
+exec, you can only use a `fd` (file descriptor) for reading ONCE, close a fd like this: 3>&-, fifo (first in first out), pipes
 http://www.catonmat.net/blog/bash-one-liners-explained-part-three/
 currently on number 13
 
 
+
+
 OTHER
+-----
 ( allow me; to treat; multiple statements ) as a unit that run in a sub-shell.
 { allow me; to treat; multiple statements; } as a unit. Useful for i/o stuff.
 & is the same as ;, but it means the command will be run in the bg.  When executed the terminal will tell you the [job#] PID of the command.
