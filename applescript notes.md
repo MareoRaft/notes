@@ -1,4 +1,5 @@
-return # Ends prematurely.  But this won't exit the script if you're inside a function.
+-- Ends prematurely.  But this won't exit the script if you're inside a function.
+return 
 
 delay 0.2 # this is like a pause, about 0.2 seconds
 

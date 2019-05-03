@@ -1,5 +1,13 @@
+npm
+---
+npm install --no-package-lock
+will install without modifying package-lock
+npm install --production
+will install based on package-lock instead of based on package (i THINK.  NOT verified)
+
+
 SYNTAX CHECKING
---------------------
+-----------------------
 npm install --global esprima
 esvalidate path/to/file.js
 

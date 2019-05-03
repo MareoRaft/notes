@@ -35,10 +35,6 @@ use 1 instead of 0 to get light or bold version
 
 
 
-freebsd date time zone stuff:
-https://www.cyberciti.biz/faq/howto-set-date-and-time-timezone-in-freebsd/
-
-
 
 127.0.0.1 is localhost
 ssh -i /path/to/key/file.pem username@IPaddress
@@ -263,9 +259,14 @@ uid/gid vs real uid / real gid - (a process that runs as a diff user)
 
 
 SETTING DATE AND TIME
+fedora:
 "date" command
 "timedatectl" command
 see also: https://linuxconfig.org/how-to-change-a-timezone-on-rhel7-linux-server
+other linux:
+cp /usr/share/zoneinfo/America/New_York /etc/localtime
+freebsd:
+https://www.cyberciti.biz/faq/howto-set-date-and-time-timezone-in-freebsd/
 
 
 
