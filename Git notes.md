@@ -3,8 +3,19 @@ http://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository
 http://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
 
 
-Start a new branch that mirrors a branch on a remote
-git checkout --track origin/dev
+Setting any server as an origin:
+(example)
+git remote add jungle ssh://forgerock@jungle:/home/forgerock/programming/ar
+
+
+Search a git repo:
+git grep
+Search across multiple commits or branches:
+https://stackoverflow.com/questions/7151311/using-git-how-could-i-search-for-a-string-across-all-branches
+
+
+Start a new branch that mirrors a branch on a remote:
+git checkout --track origin/branch-name
 
 
 
@@ -33,11 +44,12 @@ What do git HEAD^ HEAD^2 HEAD~ mean?
 https://stackoverflow.com/questions/26785118/head-vs-head-vs-head-also-known-as-tilde-vs-caret-vs-at-sign
 
 
-
-MISC:
 checking the newest changes to a file:
 git diff HEAD~ path/to/file
-merging conflicts!!!: use git mergetool to walk through each conflict and resolve!, try git mergetool -y to go through ALL conflicted files.
+
+
+merging conflicts!!!:
+use git mergetool to walk through each conflict and resolve!, try git mergetool -y to go through ALL conflicted files.
 
 
 
