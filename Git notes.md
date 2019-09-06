@@ -3,7 +3,11 @@ http://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository
 http://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
 
 
-Setting any server as an origin:
+What is a remote-tracking branch?:
+https://stackoverflow.com/questions/26125162/difference-between-origin-branch-name-and-branch-name
+
+
+Setting any server as a remote:
 (example)
 git remote add jungle ssh://forgerock@jungle:/home/forgerock/programming/ar
 
