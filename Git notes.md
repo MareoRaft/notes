@@ -1,6 +1,22 @@
+
+
+
 Resources:
 http://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository
 http://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
+
+
+editing an old commit message(s):
+Let n be the number of commits ago of the older commit you want to edit.
+git rebase -i HEAD~n
+Change the word 'pick' to 'reword' for the commits you want to reword.
+It will walk you through each commit message and you can modify it then.
+reference:
+https://stackoverflow.com/a/45302710/2203144
+
+
+how to squash commits (combine multiple commits into one big commit):
+https://github.com/todotxt/todo.txt-android/wiki/squash-all-commits-related-to-a-single-issue-into-a-single-commit
 
 
 What is a remote-tracking branch?:
@@ -79,7 +95,7 @@ git commit --amend
 
 CREATE OR CHANGE A REF
 example:
-git update-ref refs/prove-math-archive/pmdag refs/heads/pmdag 
+git update-ref refs/prove-math-archive/pmdag refs/heads/pmdag
 
 
 
