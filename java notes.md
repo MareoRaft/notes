@@ -1,3 +1,8 @@
+  * A POM file (pom.xml) (specifies the Project Object Model) for Java is like a package.json file for JavaScript.
+  * Maven for Java is like npm for JavaScript.
+
+
+
 Good Java Libraries:
   * things in Apache Commons
     * FileUtils (https://commons.apache.org/proper/commons-io/javadocs/api-2.5/org/apache/commons/io/FileUtils.html)

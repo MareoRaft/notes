@@ -56,7 +56,7 @@ drop index
 
 CONSTRAINTS:
 NOT NULL
-UNIQUE
+UNIQUE - a column or combination of columns which TOGETHER uniquely identify a row.  (the TUPLE must be unique).  If you want more than one column to be independently unique, then just write more than one UNIQUE statement.
 PRIMARY KEY (not null AND unique) - it is a column or combination of columns which uniquely identify a row!!
 FOREIGN KEY (referential stuff)
 CHECK condition
@@ -73,7 +73,7 @@ What is locking?
 locking - something RDBMS does to allow many users to access data at the same time without interfering!
 
 What is a trigger?
-A program attached to a table which is executed every time an INSERT INTO, UPDATE, or DELETE statement is made.  Triggers can use the special tables 'inserted' and 'deleted' when they want to! 
+A program attached to a table which is executed every time an INSERT INTO, UPDATE, or DELETE statement is made.  Triggers can use the special tables 'inserted' and 'deleted' when they want to!
 
 SET NOCOUNT ON
 CREATE TABLE Source (Sou_ID int IDENTITY, Sou_Desc varchar(10))

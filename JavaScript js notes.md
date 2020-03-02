@@ -1,3 +1,10 @@
+fetch function
+---------------
+fetch is builtin to javascript
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
+
+
 you might not need jquery!
 vanilla JS replacements of jQuery libraries!
 http://youmightnotneedjquery.com/
