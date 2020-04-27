@@ -29,7 +29,7 @@ paste with p.  paste before cursor with P. "mark
 
 
 when using REGEX: "all this!
-:% s/regex/replace/options "the percent means wrap around the document!  Otherwise it only searches from cursor to end of document.
+:% s/regex/replace/options "the percent means wrap around the document!  Otherwise it only searches the current line
 :% s&regex&replace&options supported!
 PCRE regex: escape the repeaters: \+, \*, and \{n,m}
 :/regex "then use n for next occurence, and N for previous occurance

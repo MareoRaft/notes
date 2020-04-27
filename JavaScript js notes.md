@@ -1,3 +1,15 @@
+react
+-----
+To get absolute path imports in react, use craco.
+Greate guide on craco (confirmed) for absolute paths:
+https://dev.to/bybruno/configuring-absolute-paths-in-react-for-web-without-ejecting-en-us-52h6
+
+
+
+
+
+
+
 fetch function
 ---------------
 fetch is builtin to javascript

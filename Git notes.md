@@ -6,6 +6,13 @@ http://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository
 http://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
 
 
+applying a diff to a repo:
+https://stackoverflow.com/questions/12320863/how-do-you-take-a-git-diff-file-and-apply-it-to-a-local-branch-that-is-a-copy-o
+git diff args > path/to/diff/output/file
+git apply path/to/diff/input/file
+
+
+
 editing an old commit message(s):
 Let n be the number of commits ago of the older commit you want to edit.
 git rebase -i HEAD~n
