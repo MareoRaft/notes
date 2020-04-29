@@ -50,12 +50,6 @@ PS1="\[\033[41m\]\[\033[30m\][\[\033[31m\]\u@\[\033[1;33m\]\h:\[\033[1;35m\]\W,\
 PS1="hostname--> \h hostname \H basenametermdevice \l shell \s username \u cwd \w cwdbase \W hist \! cmdnum \# effectUIDind \$ oct \nnn"
 
 
-
-# freebsd date time zone stuff:
-https://www.cyberciti.biz/faq/howto-set-date-and-time-timezone-in-freebsd/
-
-
-
 # hosts
 127.0.0.1 is localhost
 
@@ -314,9 +308,14 @@ uid/gid vs real uid / real gid - (a process that runs as a diff user)
 
 
 SETTING DATE AND TIME
+fedora:
 "date" command
 "timedatectl" command
 see also: https://linuxconfig.org/how-to-change-a-timezone-on-rhel7-linux-server
+other linux:
+cp /usr/share/zoneinfo/America/New_York /etc/localtime
+freebsd:
+https://www.cyberciti.biz/faq/howto-set-date-and-time-timezone-in-freebsd/
 
 
 

@@ -1,5 +1,43 @@
+react
+-----
+To get absolute path imports in react, use craco.
+Greate guide on craco (confirmed) for absolute paths:
+https://dev.to/bybruno/configuring-absolute-paths-in-react-for-web-without-ejecting-en-us-52h6
+
+
+
+
+
+
+
+fetch function
+---------------
+fetch is builtin to javascript
+https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
+
+
+you might not need jquery!
+vanilla JS replacements of jQuery libraries!
+http://youmightnotneedjquery.com/
+
+
+nodejs
+--------
+how to create a standalone executable/binary file from a nodeJS script:
+https://dev.to/jochemstoel/bundle-your-node-app-to-a-single-executable-for-windows-linux-and-osx-2c89
+
+
+npm
+------
+npm install --no-package-lock
+will install without modifying package-lock
+npm install --production
+will install based on package-lock instead of based on package (i THINK.  NOT verified)
+
+
 SYNTAX CHECKING
---------------------
+-----------------------
 npm install --global esprima
 esvalidate path/to/file.js
 

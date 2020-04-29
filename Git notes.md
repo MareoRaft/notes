@@ -1,10 +1,48 @@
+
+
+
 Resources:
 http://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository
 http://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
 
 
-Start a new branch that mirrors a branch on a remote
-git checkout --track origin/dev
+applying a diff to a repo:
+https://stackoverflow.com/questions/12320863/how-do-you-take-a-git-diff-file-and-apply-it-to-a-local-branch-that-is-a-copy-o
+git diff args > path/to/diff/output/file
+git apply path/to/diff/input/file
+
+
+
+editing an old commit message(s):
+Let n be the number of commits ago of the older commit you want to edit.
+git rebase -i HEAD~n
+Change the word 'pick' to 'reword' for the commits you want to reword.
+It will walk you through each commit message and you can modify it then.
+reference:
+https://stackoverflow.com/a/45302710/2203144
+
+
+how to squash commits (combine multiple commits into one big commit):
+https://github.com/todotxt/todo.txt-android/wiki/squash-all-commits-related-to-a-single-issue-into-a-single-commit
+
+
+What is a remote-tracking branch?:
+https://stackoverflow.com/questions/26125162/difference-between-origin-branch-name-and-branch-name
+
+
+Setting any server as a remote:
+(example)
+git remote add jungle ssh://forgerock@jungle:/home/forgerock/programming/ar
+
+
+Search a git repo:
+git grep
+Search across multiple commits or branches:
+https://stackoverflow.com/questions/7151311/using-git-how-could-i-search-for-a-string-across-all-branches
+
+
+Start a new branch that mirrors a branch on a remote:
+git checkout --track origin/branch-name
 
 
 
@@ -33,11 +71,12 @@ What do git HEAD^ HEAD^2 HEAD~ mean?
 https://stackoverflow.com/questions/26785118/head-vs-head-vs-head-also-known-as-tilde-vs-caret-vs-at-sign
 
 
-
-MISC:
 checking the newest changes to a file:
 git diff HEAD~ path/to/file
-merging conflicts!!!: use git mergetool to walk through each conflict and resolve!, try git mergetool -y to go through ALL conflicted files.
+
+
+merging conflicts!!!:
+use git mergetool to walk through each conflict and resolve!, try git mergetool -y to go through ALL conflicted files.
 
 
 
@@ -63,7 +102,7 @@ git commit --amend
 
 CREATE OR CHANGE A REF
 example:
-git update-ref refs/prove-math-archive/pmdag refs/heads/pmdag 
+git update-ref refs/prove-math-archive/pmdag refs/heads/pmdag
 
 
 
