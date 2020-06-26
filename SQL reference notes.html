@@ -30,8 +30,8 @@
       <td>BETWEEN</td>
       <td>SELECT column_name(s)<br />
 		FROM table_name<br />
-		WHERE column_name<br />
-		BETWEEN value1 AND value2 (this is an inclusive range)</td>
+		WHERE<br />
+		column_name BETWEEN value1 AND value2 (this is an inclusive range)</td>
     </tr>
     <tr>
     	<td>SHOW</td>
@@ -68,7 +68,7 @@
     <tr>
       <td>ALTER TABLE</td>
       <td>ALTER TABLE table_name <br />
-		ADD COLUMN column_name datatype<p><i>or</i></p>
+		ADD COLUMN column_name datatype [constraint]<p><i>or</i></p>
 		<p>ALTER TABLE table_name <br />
 		DROP COLUMN column_name</td>
     </tr>
