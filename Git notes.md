@@ -1,4 +1,8 @@
-
+GitLab
+------
+Delete source branch on merge by default feature:
+As of GitLab 12.5, this setting exists.  See:
+https://docs.gitlab.com/ee/user/project/settings/index.html#merge-request-settings
 
 
 Resources:
