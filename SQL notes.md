@@ -90,3 +90,9 @@ INSERT Source (Sou_Desc) VALUES ('Test 1')
 PSQL
 needs colons
 
+
+
+PL/SQL
+--------
+See the file named "SQL PL:SQL notes.md" for notes on PL/SQL
+

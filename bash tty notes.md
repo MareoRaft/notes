@@ -1,3 +1,22 @@
+Creating a new user on RHEL / fedora family
+----------------------------------------------
+sudo su root
+useradd matt
+passwd matt
+(create a password)
+visudo
+(add the following line to the bottom of the file, and save)
+matt  ALL=(ALL) NOPASSWD: ALL
+su matt
+(now we switch to the matt user because we want our ssh files to be owned by matt, not root)
+cd /home/matt
+mkdir .ssh
+cd .ssh
+vi authorized_keys
+(add your public key and save the file)
+
+
+
 BASH ON WINDOWS
 ---------------
 There is a new product called Bash on Ubuntu on Windows.  According to some, it is easier to install and start using than Cygwin!
