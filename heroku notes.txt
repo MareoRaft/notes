@@ -1,0 +1,24 @@
+heroku login --> log into your heroku account
+heroku create --> create a new heroku app
+heroku apps:create desired-app-name --> create app w desired name
+heroku apps:rename --app app-name new-app-name
+heroku plugin:install plugin-name-to-install
+heroku ps:scale web=N --> scale your app to use N dynos
+heroku ps --> list all running heroku dynos (like a "status")
+heroku logs --> see the logs of the heroku dynos
+heroku local --> run locally the way heroku would do on server
+foreman start --> a generic Procfile-backed-project runner.  Alternative to `heroku local`.
+heroku config --> view your heroku config vars
+heroku open --> open the URL of the deployed heroku app
+
+
+dyno - 'deployment environment' - a heroku container, similar to a docker container
+
+
+  * Heroku makes a git remote called 'heroku' which you can push to every time you want to update the code for an app.
+
+  * runtime.txt may allow us to specify python version
+
+Procfile - A "process file" which defines which processes need to be run for your app.  Typically, there is a single process of type "web" which kicks off your webserver/webframework.
+
+.env - Use "heroku config vars" through the GUI to set environment variables that get used on heroku itself.  But use ".env" file to set environment variables that get used locally (heroku local).

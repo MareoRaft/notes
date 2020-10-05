@@ -1,3 +1,15 @@
+NEW CURIOSITIES
+wc
+sort
+whatis
+apropos
+head
+tail
+chmod - change file mode
+quota
+file
+
+
 Creating a new user on RHEL / fedora family
 ----------------------------------------------
 sudo su root
@@ -24,7 +36,7 @@ https://blogs.msdn.microsoft.com/commandline/2016/04/06/bash-on-ubuntu-on-window
 
 
 # halt script on error
-set -e 
+set -e
 
 
 
@@ -173,9 +185,9 @@ mycommand 2>/dev/null
 ```
 The STDERR resulting from mycommand is now redirected to /dev/null.
 
-1<&2 means that the 1's input is now pulling from 2's input instead.  
+1<&2 means that the 1's input is now pulling from 2's input instead.
 We cannot chain them 1>&2 2>&3 3>&4 4>file.txt like so.
-We must chain them 4>file.txt 3>&4 2>&3 1>&2 like so.  
+We must chain them 4>file.txt 3>&4 2>&3 1>&2 like so.
 Read it like this: 4 goes to file.txt.  3 goes to what 4 is pointing to.  2 goes to what 3 is pointing to...
 1<2 would be accepting input from a file named 2.
 1<'&2' would be accepting input from a file named &2.

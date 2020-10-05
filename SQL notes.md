@@ -1,3 +1,5 @@
+-- this is a line comment in SQL.
+
 source:
 http://www.w3schools.com/sql/default.asp
 source:
@@ -5,7 +7,7 @@ http://www.techonthenet.com/sql/like.php
 SQL is Structured Query Language used to grab and edit data from a database.
 A database is called a RDBMS Relational Database Management System.  Options include SQL Server, MySQL, Oracle, DB2, MS Access, etc.
 memorize commands:
-~/DesktopFolders/programming/SQL/SQLReference.html
+~/DesktopFolders/programming/notes/SQL reference notes.html
 source:
 http://www.tutorialspoint.com/sql/sql-truncate-table.htm
 quiz:
@@ -95,4 +97,28 @@ needs colons
 PL/SQL
 --------
 See the file named "SQL PL:SQL notes.md" for notes on PL/SQL
+
+
+
+
+COUNT --> gives us the number of non-null rows in the query
+NULL --> the official 'blank' value of SQL
+None --> When a value is null, the word 'None' is shown in query output.
+IN --> instead of using = 'thing', use IN ('more', 'than', 'one', 'thing')
+ISNULL, IS NULL, IS NOT NULL --> What you must use instead of '= NULL', etc.
+HAVING --> Exactly like 'WHERE', but occurs **after** the GROUP BY clause.
+{} JOIN {} ON, {} NATURAL JOIN {} --> used as part of the FROM clause.
+WITH {my-name} AS ({sql-sub-query}) --> The subquery output is assigned a tablename which can be used in the sql query.
+CASE --> map one column to a new you-defined column, using case-by-case logic
+
+
+
+Style suggestions
+------------------------
+  * While SQL is case insensitive for SQL keywords, table names, and column names; we recommend using ALLCAPS for SQL keywords, and lowercase for column and table names.  This is common.
+  * While you can add newlines anywhere, we recommend adding them before FROM, WHERE, etc (one for each clause).
+  * If a clause is too long to fit on one line, we recommend indenting the non-initial lines.
+
+
+
 
