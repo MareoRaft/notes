@@ -1,0 +1,233 @@
+Quick defs
+----------------
+coefficient of variation - CV - a unitless version of std.  Divide the std by the mean.  Now you're looking at std as a percentage of the mean.  It is now unitless.  If you did the same experiment with two different rulers (with different units), the standard deviations would be different, but the CVs would be the same.
+
+standard error of the mean - we know the std of points, but what if we bucket points into buckets of size n.  What is the std of the mean of the buckets?  Well it's std(population)/sqrt(n).
+
+degrees of freedom - the number of "free dimensions" of a system.  For the variable of a sample of size n, the DOF is n-1.  This is because varying the FIRST point will not change the variance, but every point thereafter will.
+
+sigmoid function - any s shaped function.  Sigmoid functions include: the logistic function, tanh, arctan, erf, f(x) = 1/(1 + abs(x))
+
+classifier - given an input, says which class it thinks it falls in
+
+probabilistic classifier - given input, gives probability dist. over classes
+
+non-probabilistic classifier - given input, merely gives a single class
+
+linear classifier - makes decision based on linear combination of the input's features
+
+kernel trick - if you can't find a linear classifier in the space, then find a "kernel function" which merely sends the space to another space where you CAN find a linear classifier.
+threshold function - a function which merely returns 1 if the input is above a certain amount and 0 otherwise
+
+tf-idf - term frequency-inverse document frequency - freq that term (word) appears in doc divided by freq of docs that contain the word
+stop words - words that are removed from a text before running NLP stuff on it (typically words like "a", "the", "in")
+n-gram model - w shingling - Same as bag-of-words, but using n-grams instead of 1-grams (single words)
+
+bayesian spam filtering - how is bag-of-words used to do this?
+
+hashing trick - fast and space-efficient way to vectorize features
+deque ("deck") - double-ended queue - head-tail linked list - A queue where you can BOTH add and remove from BOTH ends.
+priority queue - A data structure *like* a queue; but on enqueue, the item gets inserted according to its priority.  On dequeue, the highest priority item is dequeued.
+complete binary tree - a binary tree where every non-bottom level is fully filled.  Fun fact!  A complete binary tree can be stored in an array!
+heap order property - The child value must be larger than the parent value.
+skip list - A linked list with another linked list above it where each guy in the original linked list has probability p of being in the second list.  And p^2 of being in 3rd, and so forth.  We can take these "higher lists" to traverse the lowest list faster.
+
+stratify -- when doing a train_test_split, using "stratify" means that the data will be split into train and test data so that the train data will have the same proportion of labels as the original data.  Same for the test data.
+
+binning -- transforming continuous data to categorical.  For example, age 56 falls into bin "50s".  One good thing about this is if we had little data, we could use ALL the data of 50s people together to make predictions about what will happen to an individual 56 yr old, even though there may have only been 1 56yr old.
+
+
+
+
+Multisets
+---------------
+bag-of-words - A text is represented by the multiset of its words.
+bag - multiset - a "set with multiplicity"
+cardinality of multiset - the sum of the multiplicities of the el.s of the bag
+inclusion - multiset A is a submultiset of B if for all x in the universe, mA(x) <= mB(x)
+intersection - the intersection of multisets A and B is the multiset C defined by (for all x in universe) mC(x) = min(mA(x), mB(x))
+union - the union of multisets A and B is the multiset C defined by (for all x in universe) mC(x) = max(mA(x), mB(x))
+sum - the sum of multisets A and B is exactly what you would think
+
+broadcasting - when 4 + [1,1,1] in numpy results in [5,5,5]
+
+
+
+Support Vector Machines (SVM)
+---------------------------------
+non-probabilistic binary linear classifier
+maximum-margin hyperplane - given data in a p-dim space, choose a (p-1)-dim hyperplane to classify the data into 2 classes, such that the distance ("margin") from the hyperplane to any single point of the data is maximized.
+perceptron of optimal stability - AKA the maximum-margin classifier - the classifier corresponding to the maximum-margin hyperplane
+
+SVM - constructs a hyperplane in a high- or infinite-dim space.
+
+
+
+
+stats / Correlation / distance measures
+------------------------------------
+Pearson correlation coefficient - bivariate correlation - Let's say we have a bunch of data points (x,y), and we want to measure their correlation.  Let X represent all values (x1, ..., xn) and let Xbar be (xbar, ..., xbar), where xbar is the average value of X.  Let DX ("delta X") be X - Xbar.  Let uDX be the unit vector of DX.  Then the cos(uDX, uDY) is the Pearson correlation coefficient.  Also equal to covariance(X,Y) / (std(X) * std(Y))
+
+covariance - dot(DX, DY) / dim (where 'dim' is the length of X) - a more general notion of "cosine". A measure of the joint variability of two random variables. If the greater values of one variable mainly correspond with the greater values of the other variable, and the same holds for the lesser values, the covariance is positive.
+
+variance - Var(X) = Cov(X, X) = E[(X - mu)^2]
+
+std deviation - square root of Var(X)
+
+
+
+datum -> a numerical fact
+data -> plural of datum
+
+population -> the set of individuals being studied.  this is often nebulous.
+
+population parameter -> numerical feature of the population
+
+random sample -> a subset of the population which is representative of the population for the trait being measured.
+
+cluster sampling -> partition population into clusters.  choose subset of clusters randomly.
+
+multistage sampling -> partition pop. into clusters.  choose subset of clusters randomly.  then do a random sample within each cluster.  (this is 2-stage)
+
+systematic sampling -> using a constant interval to choose people.  For example, the people are numbers and you choose all "multiple of 5" people.
+
+
+statistic -> an estimate of a population parameter
+
+sampling error -> the difference between the statistic and the population parameter
+
+
+
+generalization error -> out-of-sample error -> When a sample is used to construct a model, and then the model is used to predict a classification for a *new* (out-of-sample) datum, and then the error is observed.
+
+
+nominal-scale / unordered categories / attributes -> categories
+
+ordinal-scale / ranks -> numbered 1-10, for example (this is discrete)
+
+interval-scale -> categories of 1-5, 5-10, 10-15, for example
+
+
+
+discrete -> values are integers
+
+continuous -> there always exists a value between any two values.  continuous values are ALWAYS approximations!
+
+
+
+
+accuracy -> closeness of measurement to actual value
+
+bias -> systematic error that reduces accuracy
+
+precision -> "closeness" of repeated measurements of the same quantity
+
+
+
+r value - coefficient of correlation 
+
+R value - coefficient of multiple correlation.
+
+R^2 value - coefficient of determination - proportion of the variance in the dependent var that is predictable from the ind variable(s).  In a *linear regression*, using r^2 works for R^2 (where "r" is the coeff of correlation).  If there are multiple regressors, use the R value squared instead.  AND YES, IT IS
+
+1 - (sum of squares of res)/(sum of squares of mean res)
+
+
+least-squares - alternative name for the sum of squares error, or SSE, used in regular old linear regression
+
+
+
+assumptions for using linear regression
+----------------------------------------
+  1. lin rel btw dep variables and the regressors
+  2. residuals are normally distributed and ind. from each other
+  3. minimal multicollinearity of explanatory vars
+  4. homoscedasticity
+
+
+homoscedasticity - homogeneity of variance - the variance of the residual based on each independent variable is equal
+
+statistical interaction - when the effect of one independent variable on the dependent variable itself depends on another one of the independent variables.
+
+selection bias - when the method of data selection (subsampling) results in a sample that does NOT accurately reflect the true population
+
+types of selection bias:
+  * sample bias -> as stated above
+  * time interval
+  * data -> parts of data discarded
+  * attrition -> loss of participants over time
+
+bias variance tradeoff -> bias: the model is oversimplified resulting in underfitting. variance: the model is too complex resulting in overfitting.
+
+Student's t-distribution - This distribution looks like the normal distribution but shorter and wider (for 1 degree of freedom).  As the degrees of freedom approach infinity, the distribution approaches the normal distribution.
+
+See also (https://en.wikipedia.org/wiki/Student%27s_t-distribution#How_the_t-distribution_arises) for when it is applicable.
+
+
+ROC curve - receiver operating characteristic curve - plot of curves on false positive v true positive axes.
+
+
+confidence interval - this interval is, for example, the sample mean +- standard error * critical value.  Standard error is sample standard deviation / sqrt(sample size).  Critical value is a t-statistic that is a function of the % confidence you want (use a Z table to look it up)
+
+Note that critical value is also called "confidence coefficient".
+
+
+entropy of a probability distribution - the expected value of the "Shannon information" of a random variable (which has that distribution).
+
+Shannon information - Given an event x with probability Pr(x), the Shannon information, I(x), is -log_b(Pr(x)), where b is typically 2.
+
+information gain - the amount of info gained about a rand var from observing another rand var - ?
+
+prior distribution - 
+
+posterior distribution - Given a "prior" belief that a pdf is p(y) and that the observations x have a likelihood p(x|y), then the posterior probability is defined as
+
+    p(y|x) = p(x|y)p(y) / p(x)
+
+
+discriminative algos - they try to model the output from the input, P(Y|X)
+
+generative algos - they try to model the joint probability of the input and output, P(X, Y), or p(X|Y) according to Andrew Ng (a bit confusing). example: Given elephants and dog data points, build a model of what an elephant looks like, then dog.
+
+
+
+adjoint - the "conjugate transpose" operation
+
+self-adjoint - Hermitian - a matrix that is equal to its adjoint
+
+multivariate normal distribution - you have a length d vector mu, and a dxd covariance matrix Sigma, and then N(mu, Sigma) is an equation that looks like the gaussian, but has 2p to the power of d/2 instead of 1/2, and the determinant of Sigma to the 1/2 also, and some other changes.
+
+gaussian discriminant analysis - 
+
+
+parametric model - A model with a constant finite number of parameters.  A nonparametric model, on the other hand, increases in complexity with the increasing size of the training set.  For example, Linear Regression is parametric.  KNN is nonparametric.
+
+logistic regression - classified as a type of linear regression, this regression is the same as linear regression with the following differences: (1) the output then goes through a logistic function, (2) a log loss function is used to train it.  It is basically a single-neuron NN.
+
+RBF kernel - the radial basis function kernel.  A popular kernel, often used in SVM.  Given two points x and x', the function is K(x, x') = exp(-g * eucl_dist(x, x')^2)
+
+Naive Bayes Classification - ?
+
+KNN classifier - a SUPERVISED classifier, because it USES labels (please verify this)
+
+
+cross-entropy loss - the loss function often used with neural networks
+
+
+locally weighted linear regression - Given a query point x, use x as the center of an exponential decay function.  Use that function to *weight* the square error function, and compute a linear regression with that error function.  Obtain y.
+
+slack variables - these variables you can add to an SVM model so that the hyperplane tolerates having some points that fall on the wrong side!  Each slack variable Xi_i is an error for an individual point, and the sum of them all is the total error for the model.
+
+
+expectation-maximization algorithm - EM algo - you have two sets of unknowns.  Pick random values for the first.  Then (1) estimate the second from the first and (2) estimate the first from the second.  Repeat steps 1 and 2 until it converges.  It is proven that this will converge.  The result is a saddle point or local max.  Think of the "k-means algo" as an example.
+
+
+
+latent variables - hidden variables - Variables which *cannot* be measured directly or are not from the direct data that we have.  They are unobservable but often useful.
+
+
+dplyr - "data ply R" - A data manipulation library for R.
+
+
+linear discriminant analysis - 
+

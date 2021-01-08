@@ -109,7 +109,12 @@ ISNULL, IS NULL, IS NOT NULL --> What you must use instead of '= NULL', etc.
 HAVING --> Exactly like 'WHERE', but occurs **after** the GROUP BY clause.
 {} JOIN {} ON, {} NATURAL JOIN {} --> used as part of the FROM clause.
 WITH {my-name} AS ({sql-sub-query}) --> The subquery output is assigned a tablename which can be used in the sql query.
+                                    --> You can CHAIN more than one subquery using commas!
 CASE --> map one column to a new you-defined column, using case-by-case logic
+
+PRAGMA table_info({tablename})  -->  get table info
+CREATE [TEMP] TABLE {my-name} AS ({sql-sub-query})  -->  Just like 'WITH', but actually creates a table in the DB.
+
 
 
 
@@ -118,6 +123,21 @@ Style suggestions
   * While SQL is case insensitive for SQL keywords, table names, and column names; we recommend using ALLCAPS for SQL keywords, and lowercase for column and table names.  This is common.
   * While you can add newlines anywhere, we recommend adding them before FROM, WHERE, etc (one for each clause).
   * If a clause is too long to fit on one line, we recommend indenting the non-initial lines.
+
+
+
+
+types
+----------------
+varchar(n)  --  a string w/ a max char length n
+datetime  --  a datetime
+text  --  a string w/ max length of 65,535 bytes
+nchar(n)  --  a string w/ char length n exactly
+
+
+
+
+
 
 
 

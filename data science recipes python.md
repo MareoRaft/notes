@@ -21,12 +21,17 @@ sorted(pairs, key=lambda x: (-x[0], x[1]))[:]
 max(dic.items(), key=lambda x: x[1])
 
 # Getting the key with the maximum value out of a dictionary
+max(dic)
+# or
 max(dic.keys(), key=lambda k: dic[k])
 
 # Count the number of each item in an iterable.  Create a key->count dictionary.
 collections.Counter(iterable)
 
 # flatmap
+
+# flatten a list of lists into a single list
+list(itertools.chain(*list_of_lists))
 
 # accumulate (partial sums) (partial applications of a chain of binary operations)
 partial_sums = itertools.accumulate(nums)
