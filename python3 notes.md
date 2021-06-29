@@ -1,3 +1,16 @@
+pip downloads a source distribution (source code) for a package, and then builds it into a wheel. (like a .jar file).  
+# example
+uWSGI-2.0.18-cp38-cp38-<OS>_<ARCH>.whl  ->  for a specific OS and chip architecture
+uWSGI-2.0.18-cp38-cp38-macosx_10_15_x86_64.whl  ->  for mac os only
+uWSGI-2.0.18-cp38-cp38-none_x86_64.whl  ->  the OS is none.  could run on any OS, but only for x86_64 arch.
+uWSGI-2.0.18-cp38-cp38-macosx_10_15_any.whl  ->  for mac OS, but ANY architecture.
+
+
+conda has a yaml config file, where you can tell it to use pip to install things that are missing from the conda registry
+
+
+
+
 http://coderbyte.com/CodingArea/GuestEditor.php?ct=Optimal%20Assignments&lan=Python
 
 You can run a file by importing it at the interactive prompt, but this only works once per session; subsequent imports simply return the already-loaded module. To force Python to reload and rerun a file's code, call the reload(module) function instead. And while you're at it, be sure to use parentheses for reload, but not import.
