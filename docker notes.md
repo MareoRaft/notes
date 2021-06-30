@@ -82,7 +82,7 @@ ingress - point hostname to service IP address
 
 minikube start  -  start your 1-node cluster
 minikube dashboard  -  see dashboard
-kubectl get po -A  -  see all running processes? or pods?
+kubectl get po -A  -  see all running pods (po == pod == pods)
 
 kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4
 kubectl expose deployment hello-minikube --type=NodePort --port=8080
@@ -91,6 +91,9 @@ kubectl get services hello-minikube
 
 kubectl create namespace <name>
 kubectl create -f resource.yaml  ->  to create more complicated things, specify in a yaml
+
+# more kubectl commands
+kubectl cluster-info
 
 
 ## resouce.yaml example
@@ -111,7 +114,7 @@ kubectl create -f ingress.yaml  # route hostname to service via ingress
 ## create resources MORE EASILY
 kubectl apply <dirpath>  # create/update all things specified by yaml files in dir
 ## check on everything
-kubectl get pods,deployment,service,ingress
+kubectl get nodes,pods,deployment,service,ingress
 ## SUPER command to do it all automatically??
 
 
