@@ -2,6 +2,18 @@ Kubernetes
 ==========
 Idea: With kubernetes you (1) create a cluster of nodes and then (2) deploy deployments on it.
 
+k8s - short for kubernetes
+k8s - a CLI
+k9s - stripped down version of k8s
+AWS eks - AWS elastic kubernetes service (here "elastic" just means that the size adjusts to your needs)
+
+
+## currently learning on:
+https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro/
+
+
+
+
 ## great video:
 https://vimeo.com/245778144/4d1d597c5e
 
@@ -28,6 +40,7 @@ kubectl create -f resource.yaml  ->  to create more complicated things, specify 
 
 # more kubectl commands
 kubectl cluster-info
+kubectl get events,nodes,pods,deployment,service,ingress
 
 
 ## resouce.yaml example
@@ -47,8 +60,8 @@ kubectl --namespace=<name> create -f service.yaml  # create service (to expose p
 kubectl create -f ingress.yaml  # route hostname to service via ingress
 ## create resources MORE EASILY
 kubectl apply <dirpath>  # create/update all things specified by yaml files in dir
-## check on everything
-kubectl get nodes,pods,deployment,service,ingress
+## check on what you made
+kubectl get pods,deployment,service,ingress
 ## SUPER command to do it all automatically??
 
 
