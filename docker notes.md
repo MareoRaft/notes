@@ -1,3 +1,6 @@
+essential docker
+----------------
+
 docker images --> list all images
 docker ps --> list running containers
 docker ps -a --> list all containers
@@ -11,6 +14,9 @@ docker pull --> pull an image from the internet
 `docker run --rm` --> create container from image and run it
 `docker run --rm -v $(pwd):/home/jovyan` --> mount host dir ("volume") . at docker container dir /home/jovyan
 docker stop --> pause a running container
+docker rm $(docker ps --filter "status=exited" -q) --> remove all stopped containers
+docker rmi {image} --> remove image
+docker image prune --> interactively remove dangling images
 docker start --> resume a paused container
 docker exec {cntner} {cmd} --> execute a command in a running container
 docker exec -it {container} bash --> get a tty into the container! (or sh)
@@ -22,6 +28,17 @@ docker exec -it {container} bash --> get a tty into the container! (or sh)
 docker commit {containername} {imagename} --> create image out of current container state.
 docker login --> login to docker.com / docker hub, so that you can push images to it
 docker logs --tail=50 <container id>
+
+
+
+advanced docker
+---------------
+:
+
+    # tag a docker image
+    docker tag <image id or tag> <new tag>
+    docker tag mvlancellotti/tennis:prod mvlancellotti/tennis:prod-2021-01-01
+
 
 
 

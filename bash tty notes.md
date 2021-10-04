@@ -10,6 +10,7 @@ quota
 file
 
 
+
 Creating a new user on RHEL / fedora family
 ----------------------------------------------
 sudo su root
@@ -24,8 +25,7 @@ su matt
 cd /home/matt
 mkdir .ssh
 cd .ssh
-vi authorized_keys
-(add your public key and save the file)
+echo "matts_public_key_here" >> authorized_keys
 
 
 
@@ -226,7 +226,9 @@ $PATH, .gz, gzip, gunzip, tar
 octal (starts 0) and hex (starts 0x) representations of numbers in tty
 
 
-
+DISK SPACE
+df -H  -->  show all DRIVES and free/used disk space, in Human readable format
+du -h <dirpath>  -->  shows "disk usage" of DIRECTORY, in human readable format
 
 
 COMMANDS

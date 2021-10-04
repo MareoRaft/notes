@@ -1,12 +1,47 @@
 Quick defs
 ----------------
+stagewise ensemble model - An ensemble model where in each "stage" the previous models are frozen and a new model is added.
+
+stepwise - like stagewise, but models are NOT frozen.
+
+ensemble model - multiple models used together.  umbrella term.  it DECREASES variance.  why?
+see https://medium.com/@saugata.paul1010/ensemble-learning-bagging-boosting-stacking-and-cascading-classifiers-in-machine-learning-9c66cb271674
+
+stacking - different models are trained on input.  The output of these is fed as input into the "meta model".  That model makes the prediction.  (increases accuracy)  Note that what I have described is the simplest form of stacking, but we could have more layers if we wanted to.
+
+bagging - "bootstrap aggregation" - Take a random sample of the data, train the model on the data, obtain model output.  Repeat this n times.  Take an appropriate aggregate of the outputs.  (reduces variance).  Note that all the sub models are the same, as opposed to stacking where they are different.
+
+boosting - first model makes first prediction, second model runs on output of first model and tries to correct the residuals, resulting in second prediction.  and so on. (reduces bias)
+
+cascading - usually for binary classification.  Model 1 returns 0 iff it is 99% sure.  Otherwise we go to model 2.  This repeats until we reach that last model which is a human.  (extreeeeemly accurate)
+
+random forest - type of bagging where the random samples are on the features, and the models are decision trees.
+
+gradient boosting - boosting with a twist!
+
+AdaBoost - adaptive boosting - implementation of boosting where the models are decision trees with a single split.  weighting is used to focus on the more difficult inputs before adding the next model.  The prediction is the majority vote of the individual predictions, weighted by the accuracy of each individual model.
+
+"best subset" - a method of feature selection where given some p features and you want to find the best k of them to use in your model, you brute force try out all the k-subsets possible.
+
+forward stepwise - a method of feature selection where (start w/ model M0) you choose the best feature (obtaining M1), then you choose the next best feature WHEN COMBINED with the first one (obtaining M2), and so on.  Finally, choose the best model out of M0, ..., Mp.
+
+backward stepwise - same as forward stepwise but you start with all features and drop off the worst ones, one by one
+
+Lasso Regression - this is linear regression with L1 regularization added to the error function.  That is, the L1 norm on the abs value of the weights.  Error func: ||y - Xw||^2_2 + alpha * ||w||
+
+Ridge Regression - linear regression w/ L2 regularization added to the error function.  That is, L2 norm on the weights.  Error function: ||y - Xw||^2_2 + alpha * ||w||^2_2
+
+kurtosis - the "tailedness" of a distribution.  Always check the kurtosis of a distribution before applying an ML algo to it.
+
+corrected standard deviation / corrected variance - this refers to using "n-1" instead of "n" in the s.d. and variance.  This is the 'correct' thing to do b/c n-1 is the # degrees of freedom.  The regular old s.d. is also called the "uncorrected s.d."
+
 coefficient of variation - CV - a unitless version of std.  Divide the std by the mean.  Now you're looking at std as a percentage of the mean.  It is now unitless.  If you did the same experiment with two different rulers (with different units), the standard deviations would be different, but the CVs would be the same.
 
 standard error of the mean - we know the std of points, but what if we bucket points into buckets of size n.  What is the std of the mean of the buckets?  Well it's std(population)/sqrt(n).
 
-degrees of freedom - the number of "free dimensions" of a system.  For the variable of a sample of size n, the DOF is n-1.  This is because varying the FIRST point will not change the variance, but every point thereafter will.
+degrees of freedom - the number of "free dimensions" of a system.  For the variance of a sample of size n, the DOF is n-1.  This is because varying the FIRST point will not change the variance, but every point thereafter will.
 
-sigmoid function - any s shaped function.  Sigmoid functions include: the logistic function, tanh, arctan, erf, f(x) = 1/(1 + abs(x))
+sigmoid function - any s shaped function.  Sigmoid functions include: the logistic function, tanh, arctan, erf, f(x) = x / sqrt(1 + x^2).  "THE sigmoid function refers to the logistic func!"
 
 classifier - given an input, says which class it thinks it falls in
 
@@ -41,8 +76,8 @@ binning -- transforming continuous data to categorical.  For example, age 56 fal
 
 Multisets
 ---------------
-bag-of-words - A text is represented by the multiset of its words.
 bag - multiset - a "set with multiplicity"
+bag-of-words - A text is represented by the multiset of its words.
 cardinality of multiset - the sum of the multiplicities of the el.s of the bag
 inclusion - multiset A is a submultiset of B if for all x in the universe, mA(x) <= mB(x)
 intersection - the intersection of multisets A and B is the multiset C defined by (for all x in universe) mC(x) = min(mA(x), mB(x))
@@ -53,11 +88,12 @@ broadcasting - when 4 + [1,1,1] in numpy results in [5,5,5]
 
 
 
+
 Support Vector Machines (SVM)
 ---------------------------------
 non-probabilistic binary linear classifier
 maximum-margin hyperplane - given data in a p-dim space, choose a (p-1)-dim hyperplane to classify the data into 2 classes, such that the distance ("margin") from the hyperplane to any single point of the data is maximized.
-perceptron of optimal stability - AKA the maximum-margin classifier - the classifier corresponding to the maximum-margin hyperplane
+perceptron of optimal stability - the maximum-margin classifier - the classifier corresponding to the maximum-margin hyperplane
 
 SVM - constructs a hyperplane in a high- or infinite-dim space.
 
@@ -68,9 +104,9 @@ stats / Correlation / distance measures
 ------------------------------------
 Pearson correlation coefficient - bivariate correlation - Let's say we have a bunch of data points (x,y), and we want to measure their correlation.  Let X represent all values (x1, ..., xn) and let Xbar be (xbar, ..., xbar), where xbar is the average value of X.  Let DX ("delta X") be X - Xbar.  Let uDX be the unit vector of DX.  Then the cos(uDX, uDY) is the Pearson correlation coefficient.  Also equal to covariance(X,Y) / (std(X) * std(Y))
 
-covariance - dot(DX, DY) / dim (where 'dim' is the length of X) - a more general notion of "cosine". A measure of the joint variability of two random variables. If the greater values of one variable mainly correspond with the greater values of the other variable, and the same holds for the lesser values, the covariance is positive.
+covariance - dot(DX, DY) / dim (where 'dim' is the length of X) - a more general notion than "cosine". A measure of the joint variability of two random variables. If the greater values of one variable mainly correspond with the greater values of the other variable, and the same holds for the lesser values, the covariance is positive.
 
-variance - Var(X) = Cov(X, X) = E[(X - mu)^2]
+variance - Var(X) = Cov(X, X) = E[(X - mu)^2] = E[X^2] - E[X]^2
 
 std deviation - square root of Var(X)
 
@@ -124,7 +160,7 @@ precision -> "closeness" of repeated measurements of the same quantity
 
 
 
-r value - coefficient of correlation 
+r value - coefficient of correlation
 
 R value - coefficient of multiple correlation.
 
@@ -134,6 +170,10 @@ R^2 value - coefficient of determination - proportion of the variance in the dep
 
 
 least-squares - alternative name for the sum of squares error, or SSE, used in regular old linear regression
+
+residual sum of squares - RSS - sum of squared residuals - SSR - this is just a synonym of SSE
+
+
 
 
 
@@ -164,7 +204,7 @@ Student's t-distribution - This distribution looks like the normal distribution 
 See also (https://en.wikipedia.org/wiki/Student%27s_t-distribution#How_the_t-distribution_arises) for when it is applicable.
 
 
-ROC curve - receiver operating characteristic curve - plot of curves on false positive v true positive axes.
+ROC curve - receiver operating characteristic curve - plot of curves on "false positive" vs. "true positive" axes.
 
 
 confidence interval - this interval is, for example, the sample mean +- standard error * critical value.  Standard error is sample standard deviation / sqrt(sample size).  Critical value is a t-statistic that is a function of the % confidence you want (use a Z table to look it up)
@@ -174,19 +214,20 @@ Note that critical value is also called "confidence coefficient".
 
 entropy of a probability distribution - the expected value of the "Shannon information" of a random variable (which has that distribution).
 
-Shannon information - Given an event x with probability Pr(x), the Shannon information, I(x), is -log_b(Pr(x)), where b is typically 2.
+Shannon information - Given an event x with probability Pr(x), the Shannon information, I(x), is -log_b(Pr(x)), where b is typically 2.  (2->"bits", e->"nats")
 
-information gain - the amount of info gained about a rand var from observing another rand var - ?
+information gain - Kullback-Leibler divergence "from q to p" - "relative entropy" - the expected amount of info gained about a rand var from observing another rand var - ?.  it is asymmetric and does not satisfy the triangle inequality.  It is -SUM_x p(x) (log(q(x)) - log(p(x))).  The expected value of the info gained when using q as opposed to p.
 
-prior distribution - 
+prior distribution - p(y), or the distr or density of the rand var y.  Taken "prior" to having any other info.
 
 posterior distribution - Given a "prior" belief that a pdf is p(y) and that the observations x have a likelihood p(x|y), then the posterior probability is defined as
 
     p(y|x) = p(x|y)p(y) / p(x)
 
 
-discriminative algos - they try to model the output from the input, P(Y|X)
 
+discriminative algos - they try to model the output from the input, P(Y|X)
+vs.
 generative algos - they try to model the joint probability of the input and output, P(X, Y), or p(X|Y) according to Andrew Ng (a bit confusing). example: Given elephants and dog data points, build a model of what an elephant looks like, then dog.
 
 
@@ -195,14 +236,16 @@ adjoint - the "conjugate transpose" operation
 
 self-adjoint - Hermitian - a matrix that is equal to its adjoint
 
-multivariate normal distribution - you have a length d vector mu, and a dxd covariance matrix Sigma, and then N(mu, Sigma) is an equation that looks like the gaussian, but has 2p to the power of d/2 instead of 1/2, and the determinant of Sigma to the 1/2 also, and some other changes.
+multivariate normal distribution - you have a length d vector mu, and a dxd covariance matrix Sigma, and then N_d(mu, Sigma) is an equation that looks like the gaussian, but has 2p to the power of d/2 instead of 1/2, and the determinant of Sigma to the 1/2 also, and some other changes.
 
-gaussian discriminant analysis - 
+gaussian discriminant analysis - ?
 
 
 parametric model - A model with a constant finite number of parameters.  A nonparametric model, on the other hand, increases in complexity with the increasing size of the training set.  For example, Linear Regression is parametric.  KNN is nonparametric.
 
 logistic regression - classified as a type of linear regression, this regression is the same as linear regression with the following differences: (1) the output then goes through a logistic function, (2) a log loss function is used to train it.  It is basically a single-neuron NN.
+
+logistic function - f(x) = L / (1 + e^-k(x - x0))
 
 RBF kernel - the radial basis function kernel.  A popular kernel, often used in SVM.  Given two points x and x', the function is K(x, x') = exp(-g * eucl_dist(x, x')^2)
 
@@ -211,7 +254,7 @@ Naive Bayes Classification - ?
 KNN classifier - a SUPERVISED classifier, because it USES labels (please verify this)
 
 
-cross-entropy loss - the loss function often used with neural networks
+cross-entropy loss - the loss function often used with neural networks -> ?
 
 
 locally weighted linear regression - Given a query point x, use x as the center of an exponential decay function.  Use that function to *weight* the square error function, and compute a linear regression with that error function.  Obtain y.
@@ -230,4 +273,16 @@ dplyr - "data ply R" - A data manipulation library for R.
 
 
 linear discriminant analysis - 
+
+Gradient Descent - "batch gradient descent" - compute the gradient based on ALL the data, and budge in that direction.
+
+Stochastic Gradient Descent - SGD - compute the gradient based on JUST ONE datum, and budge in that direction.  WHICH datum you choose is chosen RANDOMLY.
+
+Mini Batch Gradient Descent - This is like SGD but in batches of 5 dimensions, or so.  Therefore it is more stable than SGD, but still efficient.
+
+Jupyter keyboard shortcuts: https://datalya.com/blog/python-data-science/jupyter-notebook-edit-mode-keyboard-shortcuts
+
+
+
+
 
