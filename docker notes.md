@@ -27,7 +27,12 @@ docker exec -it {container} bash --> get a tty into the container! (or sh)
 
 docker commit {containername} {imagename} --> create image out of current container state.
 docker login --> login to docker.com / docker hub, so that you can push images to it
-docker logs --tail=50 <container id>
+
+# logging!
+docker logs --tail=50 {container} --> fetch logs for your application!
+docker logs --follow {container} --> get logs that automatically update
+
+
 
 
 
@@ -71,9 +76,3 @@ https://docs.docker.com/engine/swarm/swarm-tutorial/
 Docker Compose notes
 -------------------------
 docker-compose.yml specification: https://github.com/compose-spec/compose-spec/blob/master/build.md
-
-
-
-
-
-
