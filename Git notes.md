@@ -1,5 +1,11 @@
-GitLab
+Git
 ------
+
+Removing commits from a GitLab repo permanently:
+https://docs.gitlab.com/ee/user/project/repository/reducing_the_repo_size_using_git.html#purge-files-from-repository-history
+
+
+
 change a remote's url:
 git remote set-url <remote-name> <remote-url>
 
