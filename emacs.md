@@ -1,5 +1,6 @@
 Emacs Personal Quick Ref
 ---
+C-x 0 -> close INDIVIDUAL window
 search C-s
 
 close C-x C-c
