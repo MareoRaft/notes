@@ -3,6 +3,7 @@ Recommended personal files backup process:
 1. connect Matt's Elements external HD
 2. create folder "Matt's Elements/backups/matt's macbook pro backup 2023-04-15" or similar
 3. open Carbon Copy Cloner.app
+1. choose destination as the folder you just made
 4. choose select files and folders as origin. Select home folder, then get ready to exclude some subfiles / subfolders...
 5. use commands like below to identify files and folders that take up too much space and are not important to you
   * sudo du -sh /Users/Matthew/programming/* | grep G
@@ -14,3 +15,5 @@ Recommended personal files backup process:
   * CCC will tell you how much file space is identified
   * if the amount of free space on the external HD is not enough, you need to delete old backups or something
 
+Remarks:
+  * it took me 60 minutes to delete old folders and _ minutes to backup 77 GB. (backup start 21:51pm end _:__pm)
