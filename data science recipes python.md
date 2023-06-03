@@ -29,6 +29,9 @@ max(dic.keys(), key=lambda k: dic[k])
 collections.Counter(iterable)
 
 # flatmap
+# TODO: use itertools.chain or something so it's not forced to be a list
+def flatmap(f, items):
+  return chain.from_iterable(imap(f, items))
 
 # flatten a list of lists into a single list
 list(itertools.chain(*list_of_lists))
@@ -49,3 +52,6 @@ df_agg = df.groupby([group_by_col], as_index=False).agg(agg_config)
 
 # Pandas Series filter by index / key
 series.filter(keys_to_keep)
+
+# Get the number of rows of a pandas dataframe len df
+num_rows = len(df.index)

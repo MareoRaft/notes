@@ -43,6 +43,11 @@ kubectl get services hello-minikube
 kubectl create namespace <name>
 kubectl create -f resource.yaml  ->  to create more complicated things, specify in a yaml
 
+## removing pods
+If you want to remove pods permanently from the k8s cluster, you will probably want to remove the corresponding service also.  To remove the pods themselves, you must remove the deployment instead, since it is what controls the existence of the pods.  It does not matter whether you remove the deployment or the service first.  Order does not matter.
+
+kubectl
+ca
 # more kubectl commands
 kubectl cluster-info
 kubectl get events,nodes,pods,deployment,service,ingress
@@ -75,7 +80,7 @@ kubectl get pods,deployment,service,ingress
 ## kube-apiserver
 - talks to all the other internal components (central communication channel)
 - talk to you too (when you use the cli)
-## kube-schedule
+## kube-scheduler
 - assigns pods to nodes
 - configurable for resources, limits, etc.
 ## kube-controller-manager
@@ -132,7 +137,7 @@ can be mounted onto containers as volumes, or alternatively can be set as enviro
 --
 kubectl rollout history deployment {deplyname} --namespace {name}
 
-and add additionally "--revision={#}" to see details for that rev
+and add additionally `--revision={#}` to see details for that rev
 
 kubectl rollout undo deployment {} --namespace {}
 

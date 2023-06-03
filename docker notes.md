@@ -26,7 +26,7 @@ docker exec -it {container} bash --> get a tty into the container! (or sh)
 
 
 docker commit {containername} {imagename} --> create image out of current container state.
-docker login --> login to docker.com / docker hub, so that you can push images to it
+docker login --> login to docker.com / docker hub / Nexus, so that you can pull/push images from/to it
 
 # logging!
 docker logs --tail=50 {container} --> fetch logs for your application!
