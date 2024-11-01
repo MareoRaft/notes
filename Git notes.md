@@ -1,6 +1,12 @@
 Git
 ------
 
+
+Remove file from ENTIRE git history:
+To remove file from git history, I recommend using the BFG approach referenced here:
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository
+
+
 Removing commits from a GitLab repo permanently:
 https://docs.gitlab.com/ee/user/project/repository/reducing_the_repo_size_using_git.html#purge-files-from-repository-history
 
