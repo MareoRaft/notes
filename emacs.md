@@ -7,7 +7,7 @@ C-h v user-emacs-directory --> see value of user-emacs-directory variable. Your 
 C-x C-f --> find file / open file
 C-g --> Quit command / bail on command / cancel / reverse
 
-open file C-x C-f
+C-x C-f --> open file
 C-s --> search within file
 save C-x C-s
 close C-x C-c
@@ -20,6 +20,9 @@ C-x o --> go to other window
 C-x 0 -> close INDIVIDUAL window
 C-p --> close INDIVIDUAL window (personal alias)
 
+C-x k --> close buffer
+
+
 C-/ --> undo
 C-g C-/ (C-/ one or more times) --> redo
 M-g M-g --> go to line
@@ -30,3 +33,5 @@ C-x C-f, RET RET, m per file, M-x dired-do-find-regexp-and-replace RET, <find_st
 C-x TAB --> indent-rigidly. allows you to left/right shift all highlighted text (newlines) with left, right, S-left, S-right
 
 M-x describe-key --> show what a certain keycut does
+
+C-x C-f newfilename.txt RET C-x C-s --> Creates a new buffer and then saves it as a file.

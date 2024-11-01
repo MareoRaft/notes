@@ -23,7 +23,7 @@
 		</tr>
 		<tr><td>start a new session                                                 </td>
 			<td>tmux <em>OR</em><br>tmux new <em>OR</em><br>tmux new-session        </td>
-			<td>screen                                                              </td>
+			<td>screen <i>[-S name]</i>                                             </td>
 		</tr>
 		<tr><td>re-attach a detached session                                        </td>
 			<td>tmux attach <em>OR</em><br>tmux attach-session                      </td>
@@ -46,11 +46,12 @@
 			<td>type "exit"                                                         </td>
 		</tr>
 		<tr><td>rename-window to newname                                            </td>
-			<td>^b , &lt;newname&gt; <em>OR</em><br>^b :rename-window &lt;newn&gt;  </td>
+			<td>^b , &lt;newname&gt; <em>OR</em><br>^b :rename-window &lt;newname&gt;  </td>
 			<td>^a A &lt;newname&gt;                                                </td>
 		</tr>
-		<tr><td>rename-session to newname                                            </td>
-			<td>^b $ &lt;newname&gt; <em>OR</em><br>^b :rename-session &lt;newn&gt;  </td>
+		<tr><td>rename-session to newname                                           </td>
+			<td>^b $ &lt;newname&gt; <em>OR</em><br>^b :rename-session &lt;newname&gt; </td>
+			<td>^a :sessionname <i>newname</i>                                         </td>
 		</tr>
 		<tr><td>list windows                                                        </td>
 			<td>^b w                                                                </td>
@@ -148,9 +149,13 @@
 			<td>^b [space]                                                          </td>
 			<td>                                                                    </td>
 		</tr>
-		<tr><td>Kill the current window (and all panes within)                      </td>
+		<tr><td>kill the current window (and all panes within)                      </td>
 			<td>^b killw [target-window]                                            </td>
 			<td>                                                                    </td>
+		</tr>
+		<tr><td>scroll up                                                           </td>
+			<td>^b [   and then use up/down arrows to scroll                        </td>
+			<td>^a ESC and then use up/down arrows to scroll                        </td>
 		</tr>
 	</table>
 
