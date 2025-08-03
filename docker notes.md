@@ -13,10 +13,12 @@ docker pull --> pull an image from the internet
 
 `docker run --rm` --> create container from image and run it
 `docker run --rm -v $(pwd):/home/jovyan` --> mount host dir ("volume") . at docker container dir /home/jovyan
+docker run -it -v ~/jobs/apps-by-company/meta/code-challenges:/home --rm python:3.7-slim python /home/largest_triple_products.py --> example of using docker python to execute local script instead of using local python installation
 docker stop --> pause a running container
 docker rm $(docker ps --filter "status=exited" -q) --> remove all stopped containers
 docker rmi {image} --> remove image
 docker image prune --> interactively remove dangling images
+docker rmi -f $(docker images -aq) --> force remove all images
 docker start --> resume a paused container
 docker exec {cntner} {cmd} --> execute a command in a running container
 docker exec -it {container} bash --> get a tty into the container! (or sh)

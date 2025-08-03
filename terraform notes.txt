@@ -1,0 +1,41 @@
+resource:
+https://spacelift.io/blog/terraform-environment-variables
+
+
+
+
+WRITE -> PLAN -> APPLY
+
+
+
+Variables
+## Ways to populate the variable variable without typing it into this file:
+1. terraform plan (and then it will prompt you for it interactively)
+2. TF_VAR_gitlab_token=value terraform plan
+3. export TF_VAR_gitlab_token=value; terraform plan
+4. terraform plan -var="gitlab_token=value"
+5. Use a terraform.tfvars file
+6. Use customname.tfvars file and run terraform plan -var-file="customname.tfvars"
+7. Use a customname.auto.tfvars file
+
+
+
+HCL
+- HashiCorp Configuration Language
+- a functional programming language
+- it's not as complete as something like Golang
+- .tf files (aka Terraform files) are written in HCL.
+- .tf.json files are written in JSON.
+
+Providers
+- Are plugins for Terraform written in Golang
+- represent real providers
+- Talk to real providers (such as AWS, etc.) using their APIs
+
+Resource
+- represents a real resource
+- Example: AWS S3 Bucket
+
+The Terraform Registry
+- There exists a provider registry here: https://registry.terraform.io/
+
